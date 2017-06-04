@@ -1233,13 +1233,7 @@ class WXBot:
     def gen_qr_code(self, qr_file_path):
         string = 'https://login.weixin.qq.com/l/' + self.uuid
         qr = pyqrcode.create(string)
-        if self.conf['qr'] == 'png':
-            qr.png(qr_file_path, scale=8)
-            show_image(qr_file_path)
-            # img = Image.open(qr_file_path)
-            # img.show()
-        elif self.conf['qr'] == 'tty':
-            print(qr.terminal(quiet_zone=1))
+        print(qr.terminal(quiet_zone=1))
 
     def do_request(self, url):
         r = self.session.get(url)
